@@ -93,13 +93,15 @@ class Cli:
         parser = self.create_main_parser()
         self.create_subparsers(parser)
         args = vars(parser.parse_args())
-        if self._main_function:
-            # If main function is set, call it
-            self.call_function(function=self._main_function, parsed_args=args)
         if not args[Cli.SUBCOMMAND_DEST] and not self._main_function:
             # No subcommand provided and no main function registered
             parser.error('No subcommand provided and no main function registered')
-        # Get subcommand function from specified subcommand
-        function = self._subcommand_functions[args[Cli.SUBCOMMAND_DEST]]
-        # Call subcommand function
-        Cli.call_function(function=function, parsed_args=args)
+            return
+        if self._main_function:
+            # If main function is set, call it
+            self.call_function(function=self._main_function, parsed_args=args)
+        if args[Cli.SUBCOMMAND_DEST]:
+            # Get subcommand function from specified subcommand
+            function = self._subcommand_functions[args[Cli.SUBCOMMAND_DEST]]
+            # Call subcommand function
+            Cli.call_function(function=function, parsed_args=args)
