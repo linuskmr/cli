@@ -72,7 +72,7 @@ Ok nice. That worked.
 ### Default Arguments/Options
 
 Sometimes it is conventient that a function has default arguments, which can be overridden when calling the function.
-This is also possilbe with CLI. Let's try to take our greeting function from above and extend it with an optional argument.
+This is also possilbe with `cli`. Let's try to take our greeting function from above and extend it with an optional argument.
 
 ```python
 @cli.main
@@ -132,6 +132,7 @@ verbose is False
 $ python3 main.py --verbose true add 3 2
 verbose is True
 5
+```
 
 ### Printing multiple lines
 
